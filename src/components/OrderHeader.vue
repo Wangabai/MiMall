@@ -1,13 +1,11 @@
-<!-- orderConfirm -->
+<!-- orderHeader -->
 <template>
-  <div>
-    orderConfirm
-  </div>
+  <div>order-header</div>
 </template>
 
 <script>
 export default {
-  name: 'orderConfirm',
+  name: 'order-header',
   data() {
     return {}
   },

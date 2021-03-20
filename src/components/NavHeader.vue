@@ -1,20 +1,18 @@
-<!-- orderConfirm -->
+<!-- nav-header -->
 <template>
-  <div>
-    orderConfirm
-  </div>
+  <div>nav-header</div>
 </template>
 
 <script>
 export default {
-  name: 'orderConfirm',
+  name: "nav-header",
   data() {
-    return {}
+    return {};
   },
 
   created() {},
 
   methods: {},
-}
+};
 </script>
 <style scoped></style>
