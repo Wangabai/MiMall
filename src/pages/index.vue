@@ -1,21 +1,19 @@
 <!--  -->
 <template>
-  <div>
-    index
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: "index",
+  name: 'index',
   components: {},
   data() {
-    return {};
+    return {}
   },
 
   created() {},
 
   methods: {},
-};
+}
 </script>
 <style scoped></style>

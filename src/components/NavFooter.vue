@@ -1,18 +1,18 @@
 <!-- nav-footer -->
 <template>
-  <div>nav-footer</div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: "nav-footer",
+  name: 'nav-footer',
   data() {
-    return {};
+    return {}
   },
 
   created() {},
 
   methods: {},
-};
+}
 </script>
 <style scoped></style>

@@ -3,19 +3,24 @@ import router from './router'
 import axios from 'axios'
 
 import App from './App.vue'
-import env from './env'
+// import env from './env'
+const mock = false
+if (mock) {
+  require('./mock/api')
+}
 
-Vue.config.productionTip = false
+// 把axios绑定到Vue原型上 axios不能像其他组件一样通过Vue.use()直接被引用
+Vue.prototype.$http = axios
 
 // 根据前端的跨域方式做调整，配置请求的根路径
 axios.defaults.baseURL = '/api'
-axios.defaults.baseURL = env.baseURL
+// axios.defaults.baseURL = env.baseURL
 
 // 超时时间
 axios.defaults.timeout = 8000
 
 // 接口错误拦截
-axios.interceptors.response.use(response => {
+axios.interceptors.response.use((response) => {
   let res = response.data
   if (res.status == 0) {
     return res.data
@@ -26,7 +31,9 @@ axios.interceptors.response.use(response => {
   }
 })
 
+Vue.config.productionTip = false
+
 new Vue({
   router,
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#app')
