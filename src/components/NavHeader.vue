@@ -158,12 +158,11 @@ export default {
         .get('/products', {
           params: {
             categoryId: '100012',
+            pageSize: 6,
           },
         })
         .then((res) => {
-          if (res.list.length >= 6) {
-            this.phoneList = res.list.slice(0, 6)
-          }
+          this.phoneList = res.list.slice(0, 6)
         })
     },
     // 动态跳转购物车

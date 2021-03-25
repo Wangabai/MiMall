@@ -1,18 +1,21 @@
 <!--  -->
 <template>
-  <div></div>
+  <div>
+    <service-bar></service-bar>
+  </div>
 </template>
 
 <script>
+import ServiceBar from './../components/ServiceBar'
+
 export default {
   name: 'index',
-  components: {},
+  components: {
+    ServiceBar,
+  },
   data() {
     return {}
   },
-
-  created() {},
-
   methods: {},
 }
 </script>
