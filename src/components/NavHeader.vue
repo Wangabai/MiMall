@@ -135,7 +135,7 @@ export default {
   data() {
     // return{}  局部data 只服务当前组件
     return {
-      uesername: 'jack',
+      username: '',
       phoneList: [],
     }
   },
@@ -172,7 +172,7 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import './../assets/scss/base.scss';
 @import './../assets/scss/mixin.scss';
 @import './../assets/scss/config.scss';
@@ -251,7 +251,7 @@ export default {
             color: $colorA;
             .children {
               height: 220px;
-              opacity: 1;
+              display: inline-block;
             }
           }
           .children {
@@ -260,7 +260,7 @@ export default {
             left: 0;
             width: 1226px;
             height: 0;
-            opacity: 0;
+            display: none;
             overflow: hidden;
             border-top: 1px solid #e5e5e5;
             box-shadow: 0 7px 6px 0 rgba(0, 0, 0, 0.11);
