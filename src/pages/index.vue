@@ -91,7 +91,9 @@
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>
                   <p>{{ item.subtitle }}</p>
-                  <p class="price">{{ item.price }}元</p>
+                  <p class="price" @click="addCart(item.id)">
+                    {{ item.price }}元
+                  </p>
                 </div>
               </div>
             </div>
@@ -100,11 +102,25 @@
       </div>
     </div>
     <service-bar></service-bar>
+    <Modal
+      title="提示"
+      sureText="查看购物车"
+      btnType="1"
+      modalType="middle"
+      :showModal="showModal"
+      v-on:submit="goToCart"
+      v-on:cancel="showModal = false"
+    >
+      <template v-slot:body>
+        <p>商品添加成功！</p>
+      </template>
+    </Modal>
   </div>
 </template>
 
 <script>
 import ServiceBar from './../components/ServiceBar'
+import Modal from './../components/Modal'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 
@@ -114,6 +130,7 @@ export default {
     ServiceBar,
     Swiper,
     SwiperSlide,
+    Modal,
   },
   data() {
     return {
@@ -209,6 +226,7 @@ export default {
       ],
       // 商品列表数组
       phoneList: [],
+      showModal: false,
     }
   },
   mounted() {
@@ -220,12 +238,29 @@ export default {
         .get('/products', {
           params: {
             categoryId: 100012,
-            pageSize: 8,
+            pageSize: 14,
           },
         })
         .then((res) => {
+          res.list = res.list.slice(6, 14)
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
         })
+    },
+    addCart() {
+      this.showModal = true
+      //
+      // this.$http
+      //   .post('/carts', {
+      //     productId: id,
+      //     selected: true,
+      //   })
+      //   .then(() => {})
+      //   .catch(() => {
+      //     this.showModal = true
+      //   })
+    },
+    goToCart() {
+      this.$router.push('/cart')
     },
   },
 }
