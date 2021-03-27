@@ -15,7 +15,7 @@
           <a href="javascript:;" v-if="username">我的订单</a>
           <a href="javascript:;" class="my-cart" @click="goToCart">
             <span class="icon-cart"></span>
-            购物车
+            购物车({{ cartCount }})
           </a>
         </div>
       </div>
@@ -38,7 +38,7 @@
                   <!-- target="_blank"  打开新标签-->
                   <a :href="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
-                      <img :src="item.mainImage" :alt="item.subtitle" />
+                      <img v-lazy="item.mainImage" :alt="item.subtitle" />
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
                     <div class="pro-price">{{ item.price | currency }}</div>
@@ -58,7 +58,7 @@
                   <!-- target="_blank"  打开新标签-->
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img alt="" src="/imgs/nav-img/nav-3-1.jpg" />
+                      <img alt="" v-lazy="'/imgs/nav-img/nav-3-1.jpg'" />
                     </div>
                     <div class="pro-name">小米壁画电视 65英寸</div>
                     <div class="pro-price">6999元</div>
@@ -68,7 +68,7 @@
                   <!-- target="_blank"  打开新标签-->
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-2.jpg" alt="" />
+                      <img v-lazy="'/imgs/nav-img/nav-3-2.jpg'" alt="" />
                     </div>
                     <div class="pro-name">小米全面屏电视E55A</div>
                     <div class="pro-price">1999元</div>
@@ -78,7 +78,7 @@
                   <!-- target="_blank"  打开新标签-->
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-3.png" alt="" />
+                      <img v-lazy="'/imgs/nav-img/nav-3-3.png'" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 32英寸</div>
                     <div class="pro-price">699元</div>
@@ -88,7 +88,7 @@
                   <!-- target="_blank"  打开新标签-->
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-4.jpg" alt="" />
+                      <img v-lazy="'/imgs/nav-img/nav-3-4.jpg'" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 55英寸</div>
                     <div class="pro-price">1799元</div>
@@ -98,7 +98,7 @@
                   <!-- target="_blank"  打开新标签-->
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-5.jpg" alt="" />
+                      <img v-lazy="'/imgs/nav-img/nav-3-5.jpg'" alt="" />
                     </div>
                     <div class="pro-name">小米电视4A 65英寸</div>
                     <div class="pro-price">2699元</div>
@@ -108,7 +108,7 @@
                   <!-- target="_blank"  打开新标签-->
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-6.png" alt="" />
+                      <img v-lazy="'/imgs/nav-img/nav-3-6.png'" alt="" />
                     </div>
                     <div class="pro-name">查看全部</div>
                     <div class="pro-price">查看全部</div>
@@ -135,9 +135,16 @@ export default {
   data() {
     // return{}  局部data 只服务当前组件
     return {
-      username: '',
       phoneList: [],
     }
+  },
+  computed: {
+    username() {
+      return this.$store.state.username
+    },
+    cartCount() {
+      return this.$store.state.cartCount
+    },
   },
   filters: {
     currency(val) {
@@ -195,6 +202,7 @@ export default {
         background-color: #ff6600;
         text-align: center;
         color: #ffffff;
+        margin-right: 0;
         .icon-cart {
           @include bgImg(16px, 12px, '/imgs/icon-cart-checked.png');
           margin-right: 4px;

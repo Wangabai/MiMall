@@ -63,13 +63,13 @@
           v-for="(item, index) in adsList"
           :key="index"
         >
-          <img :src="item.img" alt="" />
+          <img v-lazy="item.img" alt="" />
         </a>
       </div>
       <!-- 活动区域 -->
       <div class="banner">
         <a href="/#/product/30">
-          <img src="/imgs/banner-1.png" alt="" />
+          <img v-lazy="'/imgs/banner-1.png'" alt="" />
         </a>
       </div>
     </div>
@@ -79,14 +79,16 @@
         <h2>手机</h2>
         <div class="wrapper">
           <div class="banner-left">
-            <a href="/#/product/35"><img src="/imgs/mix-alpha.jpg" alt=""/></a>
+            <a href="/#/product/35"
+              ><img v-lazy="'/imgs/mix-alpha.jpg'" alt=""
+            /></a>
           </div>
           <div class="list-box">
             <div class="list" v-for="(arr, i) in phoneList" :key="i">
               <div class="item" v-for="(item, j) in arr" :key="j">
                 <span :class="{ 'new-pro': j % 2 == 0 }">新品</span>
                 <div class="item-img">
-                  <img :src="item.mainImage" alt="" />
+                  <img v-lazy="item.mainImage" alt="" />
                 </div>
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>
@@ -108,8 +110,8 @@
       btnType="1"
       modalType="middle"
       :showModal="showModal"
-      v-on:submit="goToCart"
-      v-on:cancel="showModal = false"
+      @submit="goToCart"
+      @cancel="showModal = false"
     >
       <template v-slot:body>
         <p>商品添加成功！</p>
@@ -354,8 +356,10 @@ export default {
     margin-top: 14px;
     margin-bottom: 31px;
     a {
-      width: 296px;
-      height: 167px;
+      img {
+        width: 296px;
+        height: 167px;
+      }
     }
   }
 

@@ -10,6 +10,7 @@ import OrderList from './pages/orderList'
 import OrderConfirm from './pages/orderConfirm'
 import OrderPay from './pages/orderPay'
 import AliPay from './pages/alipay'
+import Login from './pages/login'
 
 Vue.use(Router)
 
@@ -24,22 +25,31 @@ export default new Router({
         {
           path: '/index',
           name: 'index',
-          component: Index
-        }, {
+          component: Index,
+        },
+        {
           path: '/product/:id',
           name: 'product',
-          component: Product
-        }, {
+          component: Product,
+        },
+        {
           path: '/detail/:id',
           name: 'detail',
-          component: Detail
-        }
-      ]
-    }, {
+          component: Detail,
+        },
+      ],
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+    },
+    {
       path: '/cart',
       name: 'cart',
-      component: Cart
-    }, {
+      component: Cart,
+    },
+    {
       path: '/order',
       name: 'order',
       component: Order,
@@ -47,22 +57,24 @@ export default new Router({
         {
           path: 'list',
           name: 'order-list',
-          component: OrderList
-        }, {
+          component: OrderList,
+        },
+        {
           path: 'confirm',
           name: 'order-confirm',
-          component: OrderConfirm
-        }, {
+          component: OrderConfirm,
+        },
+        {
           path: 'pay',
           name: 'order-pay',
-          component: OrderPay
-        }, {
+          component: OrderPay,
+        },
+        {
           path: 'alipay',
           name: 'alipay',
-          component: AliPay
-        }
-      ]
-    }
-
-  ]
+          component: AliPay,
+        },
+      ],
+    },
+  ],
 })

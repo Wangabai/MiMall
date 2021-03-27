@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   width: 1226px;
   margin-right: auto;
   margin-left: auto;
@@ -8,4 +9,10 @@ a {
   img {
     width: 100%;
   }
+}
+
+input {
+  outline: onone;
+  box-sizing: border-box;
+  font-size: 14px;
 }

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'App',
+  name: 'app',
   data() {
     return {
       res: {},
@@ -14,10 +14,20 @@ export default {
   },
   components: {},
   mounted() {
-    // 本地继承mock
-    this.$http.get('/user/login').then((res) => {
-      this.res = res
-    })
+    this.getUser()
+    this.getCartCount()
+  },
+  methods: {
+    getUser() {
+      this.$http.get('/user').then((res) => {
+        this.$store.dispatch('saveUserName', res.username)
+      })
+    },
+    getCartCount() {
+      this.$http.get('/carts/products/sum').then((res) => {
+        this.$store.dispatch('saveCartCount', res)
+      })
+    },
   },
 }
 </script>
