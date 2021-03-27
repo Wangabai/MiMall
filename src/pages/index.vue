@@ -248,18 +248,20 @@ export default {
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
         })
     },
-    addCart() {
+    addCart(id) {
       this.showModal = true
-      //
-      // this.$http
-      //   .post('/carts', {
-      //     productId: id,
-      //     selected: true,
-      //   })
-      //   .then(() => {})
-      //   .catch(() => {
-      //     this.showModal = true
-      //   })
+      this.$http
+        .post('/carts', {
+          productId: id,
+          selected: true,
+        })
+        .then((res) => {
+          this.showModal = true
+          this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
+        })
+        .catch(() => {
+          this.showModal = true
+        })
     },
     goToCart() {
       this.$router.push('/cart')
