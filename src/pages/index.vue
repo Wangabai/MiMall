@@ -259,8 +259,12 @@ export default {
           this.showModal = true
           this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
         })
-        .catch(() => {
-          this.showModal = true
+        .catch((res) => {
+          if (res.state == 10) {
+            this.$router.push('/login')
+          } else {
+            this.$message.error(res.msg)
+          }
         })
     },
     goToCart() {

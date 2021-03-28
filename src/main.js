@@ -34,7 +34,6 @@ axios.interceptors.response.use((response) => {
     }
     return Promise.reject(res)
   } else {
-    this.$message.warning(res.msg)
     return Promise.reject(res)
   }
 })
