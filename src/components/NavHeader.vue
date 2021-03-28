@@ -130,6 +130,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'nav-header',
   data() {
@@ -139,12 +141,13 @@ export default {
     }
   },
   computed: {
-    username() {
-      return this.$store.state.username
-    },
-    cartCount() {
-      return this.$store.state.cartCount
-    },
+    // username() {
+    //   return this.$store.state.username
+    // },
+    // cartCount() {
+    //   return this.$store.state.cartCount
+    // },
+    ...mapState(['username','cartCount'])
   },
   filters: {
     currency(val) {
@@ -216,30 +219,6 @@ export default {
       position: relative;
       height: 112px;
       @include flex();
-      .header-logo {
-        display: inline-block;
-        width: 55px;
-        height: 55px;
-        background-color: #ff6600;
-        a {
-          display: inline-block;
-          width: 110px;
-          height: 55px;
-          &:before {
-            content: ' ';
-            @include bgImg(55px, 55px, '/imgs/mi-logo.png', 55px);
-            transition: margin 0.2s;
-          }
-          &:after {
-            content: ' ';
-            @include bgImg(55px, 55px, '/imgs/mi-home.png', 55px);
-          }
-          &:hover::before {
-            margin-left: -55px;
-            transition: margin 0.2s;
-          }
-        }
-      }
 
       .header-menu {
         display: inline-block;

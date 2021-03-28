@@ -7,13 +7,13 @@ import store from './store'
 import App from './App.vue'
 // import env from './env'
 
+import { Message } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
 const mock = false
 if (mock) {
   require('./mock/api')
 }
-
-// 把axios绑定到Vue原型上 axios不能像其他组件一样通过Vue.use()直接被引用
-Vue.prototype.$http = axios
 
 // 根据前端的跨域方式做调整，配置请求的根路径
 axios.defaults.baseURL = '/api'
@@ -34,7 +34,7 @@ axios.interceptors.response.use((response) => {
     }
     return Promise.reject(res)
   } else {
-    alert(res.msg)
+    this.$message.warning(res.msg)
     return Promise.reject(res)
   }
 })
@@ -43,6 +43,11 @@ Vue.use(VueLazyLoad, {
   loading: '/imgs/loading-svg/loading-bars.svg',
 })
 Vue.use(VueCookie)
+Vue.use(Message)
+
+// 把axios绑定到Vue原型上 axios不能像其他组件一样通过Vue.use()直接被引用
+Vue.prototype.$http = axios
+Vue.prototype.$message = Message
 Vue.config.productionTip = false
 
 new Vue({

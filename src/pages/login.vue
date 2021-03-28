@@ -83,7 +83,7 @@ export default {
           email: 'wx@qq.com',
         })
         .then(() => {
-          alert('注册成功')
+          this.$message.success('注册成功')
         })
     },
   },
