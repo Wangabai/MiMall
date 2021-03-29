@@ -12,4 +12,11 @@ module.exports = {
       },
     },
   },
+  // publicPath: '/app',
+  // indexPath: 'index2.html',
+  // lintOnSave: false,
+  productionSourceMap: false,
+  chainWebpack: (config) => {
+    config.plugins.delete('prefetch')
+  },
 }

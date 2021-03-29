@@ -72,6 +72,7 @@
             v-infinite-scroll="scrollMore"
             infinite-scroll-disabled="busy"
             infinite-scroll-distance="410"
+            v-if="false"
           >
             <img src="/imgs/loading-svg/loading-spinning-bubbles.svg" alt="" />
           </div>
@@ -109,7 +110,7 @@ export default {
       // 滚动加载是否触发
       busy: false,
       // 加载更多是否显示按钮
-      showNextPage: true,
+      showNextPage: false,
     }
   },
   mounted() {
